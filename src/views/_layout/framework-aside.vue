@@ -5,7 +5,6 @@
             :default-open-keys="defaultOpenKeys"
             :selected-keys="defaultSelectedKeys"
             :default-selected-keys="defaultSelectedKeys"
-            :show-collapse-button="useEnv('development')"
             breakpoint="sm"
             @menu-item-click="(key: string) => jump(key)"
         >
@@ -71,7 +70,6 @@ import {ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {SIDER_ROUTES} from "@/router";
 import {jump} from "@/hooks/useWindow";
-import {useEnv} from "@/hooks/useEnv";
 import storage from "@/utils/local-storage";
 import useStorePermission from "@/store/permission";
 

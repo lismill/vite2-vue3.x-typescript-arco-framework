@@ -1,0 +1,1 @@
+import{s as t}from"./index.04266c33.js";function e(e){return t({url:"/api/getTableList",method:"get",params:e})}function r(){return t({url:"/api/getSearchRemoteList",method:"get"})}export{r as a,e as g};
