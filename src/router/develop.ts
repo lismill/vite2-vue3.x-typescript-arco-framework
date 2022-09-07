@@ -151,6 +151,15 @@ export default {
                     },
                 },
                 {
+                    path: "permission-tree",
+                    name: "/develop/others/permission-tree",
+                    component: () =>
+                        import(/* webpackChunkName: "develop" */ "@/views/develop/others/permission-tree/index.vue"),
+                    meta: {
+                        title: "权限设置（树）",
+                    },
+                },
+                {
                     path: "permission-card",
                     name: "/develop/others/permission-card",
                     component: () =>
