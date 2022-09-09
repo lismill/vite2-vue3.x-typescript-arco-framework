@@ -7,6 +7,13 @@ export function getTableList(params) {
         params,
     });
 }
+export function getDictList(params) {
+    return request({
+        url: "/api/getDictList",
+        method: "get",
+        params,
+    });
+}
 export function getSearchRemoteList() {
     return request({
         url: "/api/getSearchRemoteList",

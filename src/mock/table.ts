@@ -27,6 +27,32 @@ export default [
         },
     },
     {
+        url: "/api/getDictList",
+        method: "get",
+        timeout: 0,
+        response: () => {
+            const rows: any = [];
+            for (let i = 0; i < 10; i++) {
+                rows.push({
+                    id: Random.guid(),
+                    name: Random.name(),
+                    code: Random.name(),
+                    "status|1": ["1", "2"],
+                    remark: Random.name(),
+                    create_time: Random.date(),
+                });
+            }
+            return {
+                code: 200,
+                msg: "ok",
+                data: {
+                    rows,
+                    total: Random.integer(111, 1999),
+                },
+            };
+        },
+    },
+    {
         url: "/api/getSearchRemoteList",
         method: "get",
         timeout: 0,

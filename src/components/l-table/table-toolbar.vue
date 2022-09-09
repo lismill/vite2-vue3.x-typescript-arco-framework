@@ -78,5 +78,10 @@ const RIGHT_OPERATES: any = computed(() => {
             background-color: var(--color-neutral-3);
         }
     }
+    .right {
+        button:not(:first-child) {
+            margin-left: 8px;
+        }
+    }
 }
 </style>
