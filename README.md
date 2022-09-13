@@ -6,6 +6,7 @@ vite2-vue3.x-typescript-arco-framework
 配置设置路径别名
 配置多环境配置
 配置 UI 组件库
+配置 windicss
 配置基础框架结构
 配置首次加载动画
 配置封装 localStorage
