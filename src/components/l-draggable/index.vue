@@ -35,7 +35,6 @@ const config = withDefaults(defineProps<IConfig>(), {
     list: () => [],
     options: {
         animation: 200,
-        group: "description",
         disabled: false,
         ghostClass: "ghost",
     },
