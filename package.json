@@ -82,9 +82,7 @@
         "vite-plugin-mock": "^2.9.6",
         "vite-plugin-purge-icons": "^0.8.1",
         "vite-plugin-svg-icons": "^2.0.1",
-        "vite-plugin-windicss": "^1.8.8",
-        "vue-tsc": "^0.29.8",
-        "windicss": "^3.5.6"
+        "vue-tsc": "^0.29.8"
     },
     "config": {
         "commitizen": {

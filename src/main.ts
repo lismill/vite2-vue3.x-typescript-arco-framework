@@ -9,7 +9,6 @@ import "@arco-design/web-vue/dist/arco.less";
 import "virtual:svg-icons-register";
 import "@purge-icons/generated";
 import "@/assets/styles";
-import "virtual:windi.css";
 
 console.log(import.meta.env);
 

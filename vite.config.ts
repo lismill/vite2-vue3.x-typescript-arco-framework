@@ -12,7 +12,6 @@ import {viteMockServe} from "vite-plugin-mock";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import {ArcoResolver} from "unplugin-vue-components/resolvers";
-import WindiCSS from "vite-plugin-windicss";
 import CosPlugin from "@syyfe/vite-plugin-cos";
 
 /**
@@ -52,8 +51,6 @@ const configPlugins = (
         }),
         // Iconify
         PurgeIcons({}),
-        // windicss
-        WindiCSS(),
     ];
 
     if (command === "build") {
