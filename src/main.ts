@@ -24,9 +24,10 @@ setupComponents(app);
 // Setup directive
 setupDirectives(app);
 
-app.use(router)
-    .use(pinia)
-    .use(ArcoVue, {
-        componentPrefix: "m",
-    })
-    .mount("#app");
+app
+  .use(router)
+  .use(pinia)
+  .use(ArcoVue, {
+    componentPrefix: "m",
+  })
+  .mount("#app");

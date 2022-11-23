@@ -1,5 +1,5 @@
 <template>
-    <div id="echarts" ref="chart"></div>
+  <div id="echarts" ref="chart"></div>
 </template>
 
 <script setup lang="ts">
@@ -13,10 +13,10 @@ const chart = ref<HTMLElement>();
 let myEcharts: EChartsType | null = null;
 
 const init = (data?: any) => {
-    if (myEcharts) myEcharts.dispose();
-    myEcharts = echarts.init(chart.value as HTMLElement);
-    myEcharts.setOption(data ?? props.option, true);
-    window.addEventListener("resize", () => (myEcharts as EChartsType).resize());
+  if (myEcharts) myEcharts.dispose();
+  myEcharts = echarts.init(chart.value as HTMLElement);
+  myEcharts.setOption(data ?? props.option, true);
+  window.addEventListener("resize", () => (myEcharts as EChartsType).resize());
 };
 
 onMounted(() => init());
@@ -26,8 +26,8 @@ defineExpose({init});
 
 <style lang="scss" scoped>
 #echarts {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
 </style>

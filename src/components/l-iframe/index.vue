@@ -1,5 +1,5 @@
 <template>
-    <iframe class="l-iframe" :src="src" frameborder="0"></iframe>
+  <iframe class="l-iframe" :src="src" frameborder="0"></iframe>
 </template>
 
 <script setup lang="ts">
@@ -8,9 +8,9 @@ defineProps<{src: string}>();
 
 <style lang="scss" scoped>
 .l-iframe {
-    border: none;
-    width: 100%;
-    min-height: calc(100vh - 210px);
+  border: none;
+  width: 100%;
+  min-height: calc(100vh - 210px);
 }
 </style>
 

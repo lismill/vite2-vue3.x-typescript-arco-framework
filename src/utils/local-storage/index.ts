@@ -7,19 +7,19 @@ const {localStorage} = window;
  * @returns
  */
 const get = (key: string) => {
-    try {
-        if (!key) return "";
-        const v = localStorage.getItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`);
-        if ((v?.startsWith("{") && v.endsWith("}")) || (v?.startsWith("[") && v.endsWith("]"))) {
-            return JSON.parse(v);
-        }
-        if (v === "true" || v === "false") {
-            return v === "true";
-        }
-        return v;
-    } catch (err) {
-        return "";
+  try {
+    if (!key) return "";
+    const v = localStorage.getItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`);
+    if ((v?.startsWith("{") && v.endsWith("}")) || (v?.startsWith("[") && v.endsWith("]"))) {
+      return JSON.parse(v);
     }
+    if (v === "true" || v === "false") {
+      return v === "true";
+    }
+    return v;
+  } catch (err) {
+    return "";
+  }
 };
 
 /**
@@ -28,20 +28,20 @@ const get = (key: string) => {
  * @param value
  */
 const set = (key: string, value: string | boolean | object) => {
-    let v = "";
-    switch (typeof value) {
-        case "object":
-            v = JSON.stringify(value);
-            break;
-        case "boolean":
-            v = String(value);
-            break;
-        default:
-            v = value;
-            break;
-    }
+  let v = "";
+  switch (typeof value) {
+    case "object":
+      v = JSON.stringify(value);
+      break;
+    case "boolean":
+      v = String(value);
+      break;
+    default:
+      v = value;
+      break;
+  }
 
-    localStorage.setItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`, v);
+  localStorage.setItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`, v);
 };
 
 /**
@@ -50,7 +50,7 @@ const set = (key: string, value: string | boolean | object) => {
  * @returns
  */
 const remove = (key: string) => {
-    return localStorage.removeItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`);
+  return localStorage.removeItem(`${useEnvValue("VITE_LOCAL_STORAGE_PREFIX")}_${key}`);
 };
 
 /**
@@ -58,12 +58,12 @@ const remove = (key: string) => {
  * @returns
  */
 const clear = () => {
-    return localStorage.clear();
+  return localStorage.clear();
 };
 
 export default {
-    get,
-    set,
-    remove,
-    clear,
+  get,
+  set,
+  remove,
+  clear,
 };

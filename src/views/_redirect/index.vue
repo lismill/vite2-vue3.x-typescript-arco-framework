@@ -1,5 +1,5 @@
 <template>
-    <div class="redirect">loading</div>
+  <div class="redirect">loading</div>
 </template>
 <script setup lang="ts">
 import {useRoute, useRouter} from "vue-router";
@@ -14,9 +14,9 @@ ROUTER.back();
 
 <style lang="scss" scoped>
 .redirect {
-    height: calc(100vh - 132px);
-    line-height: calc(100vh - 132px);
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
+  height: calc(100vh - 132px);
+  line-height: calc(100vh - 132px);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 </style>

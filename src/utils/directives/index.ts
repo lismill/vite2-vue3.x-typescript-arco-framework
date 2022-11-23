@@ -5,5 +5,5 @@ const modules = import.meta.globEager("./*.ts");
 const directives = Object.values(modules).map((routes) => routes.default);
 
 export const setupDirectives = (app: App) => {
-    directives.forEach((directive) => directive.name && app.directive(directive.name, directive));
+  directives.forEach((directive) => directive.name && app.directive(directive.name, directive));
 };

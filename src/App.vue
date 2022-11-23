@@ -1,11 +1,11 @@
 <template>
-    <div v-if="loading" id="frameword-loading">
-        <div>
-            <l-ify-icon name="eos-icons:loading" size="40"></l-ify-icon>
-            <p>加载中...</p>
-        </div>
+  <div v-if="loading" id="frameword-loading">
+    <div>
+      <l-ify-icon name="eos-icons:loading" size="40"></l-ify-icon>
+      <p>加载中...</p>
     </div>
-    <router-view v-else></router-view>
+  </div>
+  <router-view v-else></router-view>
 </template>
 
 <script setup lang="ts">
@@ -22,7 +22,7 @@ dayjs.locale("zh-cn");
 
 const loading = ref(true);
 setTimeout(() => {
-    loading.value = false;
-    USE_STORE_PERMISSION.changePermission("100000,100001");
+  loading.value = false;
+  USE_STORE_PERMISSION.changePermission("100000,100001");
 }, 300);
 </script>

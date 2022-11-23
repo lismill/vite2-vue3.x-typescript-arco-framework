@@ -1,12 +1,12 @@
 <template>
-    <div class="bg-ffffff p-24">
-        <l-table-edit :config="deepConfig">
-            <template #custom>custom-slot</template>
-        </l-table-edit>
-        <div class="m-t16">
-            {{ deepConfig.data }}
-        </div>
+  <div class="bg-ffffff p-24">
+    <l-table-edit :config="deepConfig">
+      <template #custom>custom-slot</template>
+    </l-table-edit>
+    <div class="m-t16">
+      {{ deepConfig.data }}
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">

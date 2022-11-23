@@ -1,9 +1,9 @@
 <template>
-    <router-view v-slot="{Component}">
-        <keep-alive :include="USE_STORE_KEEPALIVE.keepalives">
-            <component :is="Component" :key="$route.name" />
-        </keep-alive>
-    </router-view>
+  <router-view v-slot="{Component}">
+    <keep-alive :include="USE_STORE_KEEPALIVE.keepalives">
+      <component :is="Component" :key="$route.name" />
+    </keep-alive>
+  </router-view>
 </template>
 <script setup lang="ts">
 import useStoreKeepalive from "@/store/keepalive";
