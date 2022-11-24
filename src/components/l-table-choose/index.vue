@@ -26,15 +26,16 @@
   <m-modal
     v-model:visible="modalConfig.modal.visible"
     width="1200"
+    title-align="start"
     :draggable="true"
-    :closable="false"
     :mask-closable="false"
     :esc-to-close="false"
-    :hide-cancel="true"
     ok-text="添加数据"
     modal-class="l-table-choose-modal"
     v-bind="modalConfig.modal?.others"
+    @open="handleOpen"
     @ok="handleOk"
+    @cancel="handleCancel"
   >
     <template #title>{{ modalConfig.modal?.others?.title }}</template>
     <CustomVueScrollbar style="max-height: calc(100vh - 320px)">
@@ -50,12 +51,28 @@ import CustomVueScrollbar from "custom-vue-scrollbar";
 import "custom-vue-scrollbar/dist/style.css";
 import {ILTable} from "../l-table/interface";
 import {ILTableChoose} from "./interface";
+import {useCloneDeep} from "@/hooks/useCloneDeep";
 
 const props = defineProps<{modalConfig: ILTableChoose; chooseConfig: ILTable}>();
 const emits = defineEmits(["choose:change"]);
 const customTrigger = !!useSlots()["custom-trigger"];
 const modalConfig = reactive(props.modalConfig);
 const chooseConfig = reactive(props.chooseConfig);
+const defaultData: any = ref([]);
+
+/**
+ * 打开弹出框
+ */
+const handleOpen = () => {
+  defaultData.value = useCloneDeep(chooseConfig.table.data);
+};
+
+/**
+ * 关闭弹窗
+ */
+const handleCancel = () => {
+  modalConfig.table.selectedRows = defaultData;
+};
 
 /**
  * 点击确认选择

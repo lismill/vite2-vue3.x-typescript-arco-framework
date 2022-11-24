@@ -36,7 +36,7 @@
       <table-footer
         :config="config"
         @pagination:change="queryData"
-        @operate="(name: any) => emits('operate', name)"
+        @operate="(name: string) => emits('operate', name)"
       ></table-footer>
     </m-spin>
   </div>
