@@ -255,7 +255,7 @@
                       disabled: config.form?.disabled ?? false,
                       ...item.others,
                     }"
-                    @change="(html) => (config.form.data[item.name] = html)"
+                    @change="(html: any) => (config.form.data[item.name] = html)"
                   ></l-editor>
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -303,6 +303,7 @@
               </m-button>
               <m-button
                 v-if="config.form?.operates?.centerShowSubmitButton"
+                :loading="buttonLoading"
                 class="m-lr4"
                 type="primary"
                 html-type="submit"
@@ -352,6 +353,7 @@ const props = defineProps<{config: any}>();
 const emits = defineEmits(["submit", "operate"]);
 const config = reactive(props.config);
 const formRef = ref();
+const buttonLoading = ref(false);
 
 /**
  * 左侧按钮组权限节点
@@ -421,13 +423,16 @@ const getSpan = (size: string) => {
 /**
  * 提交表单成功
  */
-const handleSubmitSuccess = (values: any) => emits("submit", values);
+const handleSubmitSuccess = (values: any) => {
+  buttonLoading.value = true;
+  emits("submit", values);
+};
 
 /**
  * 提交表单失败
  */
 const handleSubmitFailed = () => {
-  const OFFSET_TOP = (document as any).querySelector(".mo-form-item-message")?.offsetTop;
+  const OFFSET_TOP = (document as any).querySelector(".arco-form-item-message")?.offsetTop;
   if (OFFSET_TOP) {
     const FORM_CONTAINER = (document as any).querySelector("#framework-content-scrollbar");
     FORM_CONTAINER.scrollTo({
@@ -450,6 +455,11 @@ const resetFields = (name?: string) => (name ? formRef.value.resetFields(name) :
 const validate = (name?: string) => (name ? formRef.value.validateField(name) : formRef.value.validate());
 
 /**
+ * 清除loading
+ */
+const cancelButtonLoading = () => (buttonLoading.value = false);
+
+/**
  * 滚动底部操作栏样式
  */
 const scrollFooterStyle = () => {
@@ -469,7 +479,7 @@ const scrollFooterStyle = () => {
 onMounted(() => scrollFooterStyle());
 onBeforeUnmount(() => window.removeEventListener("resize", () => false));
 
-defineExpose({resetFields, validate});
+defineExpose({resetFields, validate, cancelButtonLoading});
 </script>
 
 <style lang="scss" scoped>

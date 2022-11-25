@@ -9,7 +9,7 @@ export const config: ILForm = {
     operatesAlign: "center",
     operates: {
       left: [
-        {name: "左侧按钮", others: {type: "primary", status: "success"}},
+        {name: "左侧按钮", others: {type: "primary", status: "success", loading: true}},
         {name: "禁用表单", others: {type: "primary", status: "warning"}},
         {name: "启用表单", others: {type: "outline", status: "success"}},
       ],
@@ -78,7 +78,6 @@ export const config: ILForm = {
           type: "select-search",
           label: "远程搜索",
           name: "selectremote",
-          rules: [{required: true, message: "请选择远程搜索"}],
           info: "这是一段自定义文案 size: small",
           options: [],
           others: {

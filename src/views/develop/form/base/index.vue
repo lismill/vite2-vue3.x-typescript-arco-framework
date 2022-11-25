@@ -1,6 +1,6 @@
 <template>
   <div class="bg-ffffff">
-    <l-form :config="deepConfig" @submit="submit" @operate="handleOperate">
+    <l-form ref="refForm" :config="deepConfig" @submit="submit" @operate="handleOperate">
       <template #slotName="{item}">
         <m-input
           v-model="deepConfig.form.data[item.name]"
@@ -18,6 +18,7 @@ import {useCloneDeep} from "@/hooks/useCloneDeep";
 import {config} from "./config";
 
 const deepConfig = reactive(useCloneDeep(config));
+const refForm = ref();
 
 /**
  * 设置默认值
@@ -44,6 +45,7 @@ deepConfig.form.data = {
  */
 const submit = () => {
   console.log(deepConfig.form.data);
+  setTimeout(refForm.value.cancelButtonLoading, 800);
 };
 
 /**
