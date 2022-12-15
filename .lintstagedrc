@@ -1,0 +1,6 @@
+{
+  "*.{ts,js,jsx,vue}": [
+    "vue-tsc --noEmit --skipLibCheck",
+    "eslint"
+  ]
+}
