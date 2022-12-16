@@ -8,7 +8,7 @@
         <span v-if="index !== breadcrumbs.length - 1" class="cursor-pointer" @click="ROUTER.push(item)">
           {{ item.meta?.title }}
         </span>
-        <span v-else>{{ item.meta?.title }}</span>
+        <span v-else>{{ OPERATES_TITLE }}{{ item.meta?.title }}</span>
       </m-breadcrumb-item>
     </m-breadcrumb>
   </div>
@@ -22,24 +22,12 @@ const breadcrumbs: any = ref([]);
 const ROUTE = useRoute();
 const ROUTER = useRouter();
 
-console.log(breadcrumbs);
+const OPERATES: any = {create: "创建", edit: "编辑", view: "查看"};
+const OPERATES_TITLE = OPERATES[ROUTE.query?.operate as string];
 
 watch(
   () => ROUTE.path,
   () => {
-    switch (ROUTE.query?.operate) {
-      case "add":
-        ROUTE.matched[ROUTE.matched.length - 1].meta.title = `新增${ROUTE.meta.title}`;
-        break;
-      case "edit":
-        ROUTE.matched[ROUTE.matched.length - 1].meta.title = `编辑${ROUTE.meta.title}`;
-        break;
-      case "view":
-        ROUTE.matched[ROUTE.matched.length - 1].meta.title = `查看${ROUTE.meta.title}`;
-        break;
-      default:
-        break;
-    }
     breadcrumbs.value = ROUTE.matched;
   },
   {

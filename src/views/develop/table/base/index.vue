@@ -48,11 +48,13 @@
 
 <script setup lang="ts">
 import {reactive} from "vue";
+import {useRouter} from "vue-router";
 import {config} from "./config";
 import {useCloneDeep} from "@/hooks/useCloneDeep";
 import {ILTableOperate} from "@/components/l-table-operate/interface";
 import {useMessage} from "@/hooks/useMessage";
 
+const ROUTER = useRouter();
 const deepConfig = reactive(useCloneDeep(config));
 
 /**
@@ -84,7 +86,6 @@ const operateList: Array<ILTableOperate> = [
   {name: "编辑", show: true},
   {name: "详情", show: true},
   {name: "删除", show: true, popconfirm: "确定删除么?"},
-  {name: "查看", show: true},
   {name: "复制", show: true},
   {name: "导出数据", show: true},
 ];
@@ -94,11 +95,14 @@ const operateList: Array<ILTableOperate> = [
  */
 const handleOperate = (key: string, rows?: any, index?: number) => {
   switch (key) {
-    case "批量上架":
-    case "批量下架":
-    case "批量开始":
-    case "批量删除":
-      useMessage().success(`批量删除: ${key}: ${deepConfig.table?.selectedRows?.length} 个元素`);
+    case "创建账号":
+      ROUTER.push({name: "/develop/form/base", query: {operate: "create"}});
+      break;
+    case "编辑":
+      ROUTER.push({name: "/develop/form/base", query: {operate: "edit"}});
+      break;
+    case "详情":
+      ROUTER.push({name: "/develop/form/base", query: {operate: "view"}});
       break;
     default:
       useMessage().success(`${key}: - index: ${index}`);
