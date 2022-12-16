@@ -8,10 +8,12 @@ export const tableConfig: ILTable = {
     data: {},
     forms: [
       {
+        type: "input",
         label: "角色信息",
         field: "keyword",
       },
       {
+        type: "input",
         label: "角色分类",
         field: "area",
       },
