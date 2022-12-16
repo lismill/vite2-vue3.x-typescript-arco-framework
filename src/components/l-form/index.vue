@@ -492,7 +492,7 @@ defineExpose({resetFields, validate, cancelButtonLoading});
     color: #12141a;
   }
   .section-title {
-    padding-left: 12px;
+    padding-left: 24px;
     height: 42px;
     font-size: 15px;
     font-weight: 500;
