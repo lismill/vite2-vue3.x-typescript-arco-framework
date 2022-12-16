@@ -308,7 +308,7 @@
                 type="primary"
                 html-type="submit"
               >
-                提交
+                保存
               </m-button>
             </template>
             <!-- center -->

@@ -34,7 +34,7 @@
         <m-button v-if="config.form?.operates?.centerShowResetButton" class="m-lr4" @click="() => resetFields()">
           重置
         </m-button>
-        <m-button class="m-lr4" type="primary" @click="() => submit()">提交</m-button>
+        <m-button class="m-lr4" type="primary" @click="() => submit()">保存</m-button>
       </template>
       <!-- center -->
       <template v-if="config.form?.operates?.center?.length">
@@ -79,7 +79,7 @@ const defaultCondig = {
   maskClosable: false,
   alignCenter: false,
   cancelText: "重置",
-  okText: "提交",
+  okText: "保存",
 };
 const props = defineProps<{config: ILFormDialog; defaultFormData: any}>();
 const emits = defineEmits(["operate", "submit"]);
