@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="config.search?.data && config.search?.forms?.length"
-    class="l-table-search m-b8"
+    class="l-table-search mb-[8px]"
     :class="[
-      config.search.forms?.length > 2 && 'flex',
+      config.search.forms?.length > 2 && 'flex items-center',
       config.search.forms?.length === 3 && 'total-3',
       config.search.forms?.length > 3 && 'more-3',
     ]"
@@ -11,7 +11,7 @@
     <!-- form -->
     <m-form
       ref="formRef"
-      class="form flex"
+      class="form flex items-center"
       direction="horizontal"
       :model="config.search.data"
       :auto-label-width="true"

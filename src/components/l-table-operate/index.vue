@@ -1,5 +1,5 @@
 <template>
-  <div class="l-table-operate">
+  <div class="l-table-operate flex items-center">
     <template v-for="(item, index) in operateList" :key="index">
       <!-- 操作元素小于等于三个 -->
       <template v-if="index < 3">
@@ -71,7 +71,7 @@ const emits = defineEmits(["handle:click"]);
   .ellipsis {
     cursor: pointer;
     position: relative;
-    top: 5px;
+    top: 1px;
     left: 8px;
     width: 16px;
   }

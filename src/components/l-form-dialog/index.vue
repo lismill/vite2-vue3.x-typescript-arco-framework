@@ -6,7 +6,6 @@
     modal-class="l-form-dialog-modal"
     v-bind="{...defaultCondig, ...config.dialog?.others}"
     @cancel="cancel"
-    @before-open="resetFormData"
   >
     <CustomVueScrollbar id="l-form-dialog-modal-scrollbar" style="max-height: calc(100vh - 300px)">
       <l-form ref="modalFormRef" :config="config">
@@ -17,12 +16,14 @@
       </l-form>
     </CustomVueScrollbar>
     <template #footer>
+      <!-- cancel -->
+      <m-button class="m-lr4" @click="cancel">取消</m-button>
       <!-- left -->
       <template v-if="config.form?.operates?.left?.length">
         <m-button
           v-for="item in config.form.operates.left"
           :key="item.name"
-          class="m-lr4"
+          class="ml-[4px] mr-[4px]"
           v-bind="item.others"
           @click="() => emits('operate', item.name)"
         >
@@ -31,17 +32,21 @@
       </template>
       <!-- no-center -->
       <template v-if="!config.form?.operates?.center">
-        <m-button v-if="config.form?.operates?.centerShowResetButton" class="m-lr4" @click="() => resetFields()">
+        <m-button
+          v-if="config.form?.operates?.centerShowResetButton"
+          class="ml-[4px] mr-[4px]"
+          @click="() => resetFields()"
+        >
           重置
         </m-button>
-        <m-button class="m-lr4" type="primary" @click="() => submit()">保存</m-button>
+        <m-button class="ml-[4px] mr-[4px]" type="primary" :loading="loading" @click="() => submit()">保存</m-button>
       </template>
       <!-- center -->
       <template v-if="config.form?.operates?.center?.length">
         <m-button
           v-for="item in config.form.operates.center"
           :key="item.name"
-          class="m-lr4"
+          class="ml-[4px] mr-[4px]"
           v-bind="item.others"
           @click="() => emits('operate', item.name)"
         >
@@ -69,6 +74,7 @@ import CustomVueScrollbar from "custom-vue-scrollbar";
 import "custom-vue-scrollbar/dist/style.css";
 import {ILFormDialog} from "./interface";
 import {useMessage} from "@/hooks/useMessage";
+import {useCloneDeep} from "@/hooks/useCloneDeep";
 
 const defaultCondig = {
   width: 620,
@@ -86,6 +92,7 @@ const emits = defineEmits(["operate", "submit"]);
 const slots = Object.keys(useSlots());
 const config = reactive(props.config);
 const modalFormRef = ref();
+const loading = ref(false);
 
 /**
  * 重置表单
@@ -106,8 +113,8 @@ const validate = (name?: string) => (name ? modalFormRef.value.validateField(nam
 const submit = async () => {
   const error = await validate();
   if (!error) {
+    loading.value = true;
     emits("submit");
-    cancel();
   } else {
     const OFFSET_TOP = (document as any).querySelector(".arco-form-item-message")?.offsetTop;
     if (OFFSET_TOP) {
@@ -118,19 +125,36 @@ const submit = async () => {
         behavior: "smooth",
       });
     }
+    loading.value = false;
     useMessage().error("请完整填写表单");
   }
 };
 
 /**
+ * 打开弹出框
+ */
+const open = () => {
+  config.dialog.visible = true;
+  resetFormData();
+};
+
+/**
  * 关闭弹出框
  */
-const cancel = () => (config.dialog.visible = false);
+const cancel = () => {
+  config.dialog.visible = false;
+  loading.value = false;
+};
+
+/**
+ * 关闭loading
+ */
+const cancelLoading = () => (loading.value = false);
 
 /**
  * 打开弹出框重置数据
  */
-const resetFormData = () => (config.form.data = props.defaultFormData);
+const resetFormData = () => (config.form.data = useCloneDeep(props.defaultFormData));
 
-defineExpose({resetFields, validate});
+defineExpose({resetFields, validate, open, cancel, cancelLoading});
 </script>

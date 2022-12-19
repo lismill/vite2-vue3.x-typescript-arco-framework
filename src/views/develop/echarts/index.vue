@@ -1,13 +1,12 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">ECharts</h3>
+  <l-content title="ECharts">
     <m-row :gutter="16">
       <m-col :span="12"><chart1></chart1></m-col>
       <m-col :span="12"><chart2></chart2></m-col>
       <m-col :span="12" class="m-t16"><chart3></chart3></m-col>
       <m-col :span="12" class="m-t16"><chart4></chart4></m-col>
     </m-row>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,5 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">权限设置（树）</h3>
+  <l-content title="权限设置（树）">
     <m-tree
       v-model:checked-keys="checkedKeys"
       size="large"
@@ -12,8 +11,8 @@
       :block-node="true"
       :data="treeData"
     />
-    <div class="m-t16">{{ checkedKeys }}</div>
-  </div>
+    <div class="mt-[16px]">{{ checkedKeys }}</div>
+  </l-content>
 </template>
 <script setup lang="ts">
 const checkedKeys = ref<Array<string | number>>([]);

@@ -1,5 +1,5 @@
 <template>
-  <div class="dict-list bg-ffffff p-24">
+  <l-content>
     <l-table ref="table" :config="deepConfig" @operate="handleOperate">
       <template #status="{rows}">
         <l-status-tag
@@ -14,7 +14,7 @@
         ></l-table-operate>
       </template>
     </l-table>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

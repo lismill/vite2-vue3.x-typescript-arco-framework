@@ -1,11 +1,10 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">上传文件</h3>
+  <l-content title="上传文件">
     <l-upload-file :config="upload.config" @file:change="(fileList) => (upload.fileLists = fileList)"></l-upload-file>
-    <div class="m-t16">
+    <div class="mt-[16px]">
       {{ upload.fileLists }}
     </div>
-  </div>
+  </l-content>
 </template>
 <script setup lang="ts">
 import {reactive} from "vue";

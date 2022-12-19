@@ -1,5 +1,5 @@
 <template>
-  <div class="m-t4 color-999999 font-13" v-html="info"></div>
+  <div class="mt-[4px] color-999999 text-[13px]" v-html="info"></div>
 </template>
 <script setup lang="ts">
 defineProps<{

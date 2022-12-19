@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-ffffff p-24">
+  <l-content title="选择表格">
     <l-table-choose
       :modal-config="deepModalConfig"
       :choose-config="deepChooseConfig"
       @choose:change="chooseChange"
     ></l-table-choose>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

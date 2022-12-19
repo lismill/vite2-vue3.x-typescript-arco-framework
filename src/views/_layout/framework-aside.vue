@@ -6,13 +6,12 @@
       :selected-keys="defaultSelectedKeys"
       :default-selected-keys="defaultSelectedKeys"
       breakpoint="sm"
-      @menu-item-click="(key: string) => jump(key)"
     >
       <template v-for="first in menus" :key="first.name">
         <!-- 一级菜单 - 无二级菜单 -->
         <template v-if="first.children?.length === 1">
           <template v-if="!first.meta?.hidden">
-            <m-menu-item :key="first.name">
+            <m-menu-item :key="first.name" @click="jumpRoute(first, 'first')">
               <template v-if="first.meta?.icon" #icon>
                 <l-svg-icon :name="(first.meta?.icon as string)" size="18"></l-svg-icon>
               </template>
@@ -31,7 +30,7 @@
             <!-- 二级菜单 - 无三级菜单 -->
             <template v-if="!second?.children?.length">
               <template v-if="!second.meta?.hidden">
-                <m-menu-item :key="second.name">
+                <m-menu-item :key="second.name" @click="jumpRoute(second)">
                   <template v-if="second.meta?.icon" #icon>
                     <l-svg-icon :name="(second.meta?.icon as string)" size="18"></l-svg-icon>
                   </template>
@@ -49,7 +48,7 @@
                 <!-- 三级菜单 -->
                 <template v-if="second.children?.length">
                   <template v-if="!second.meta?.hidden">
-                    <m-menu-item v-for="three in second.children" :key="three.name">
+                    <m-menu-item v-for="three in second.children" :key="three.name" @click="jumpRoute(three)">
                       <template v-if="three.meta?.icon" #icon>
                         <l-svg-icon :name="(three.meta?.icon as string)" size="18"></l-svg-icon>
                       </template>
@@ -66,15 +65,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import {ref, watch} from "vue";
-import {useRoute} from "vue-router";
 import {SIDER_ROUTES} from "@/router";
-import {jump} from "@/hooks/useWindow";
 import storage from "@/utils/local-storage";
 import useStorePermission from "@/store/permission";
 
 const USE_STORE_PERMISSION = useStorePermission();
 const ROUTE = useRoute();
+const ROUTER = useRouter();
 const defaultOpenKeys = ref<Array<string>>([]);
 const defaultSelectedKeys = ref<Array<string>>([]);
 
@@ -110,6 +107,23 @@ const resetOpenAndSelectedKeys = () => {
   defaultSelectedKeys.value = matched as Array<string>;
   // 自定义激活菜单
   ROUTE.meta?.active && (defaultSelectedKeys.value = [ROUTE.meta.active as string]);
+};
+
+/**
+ * 路由跳转
+ */
+const jumpRoute = (route: {name: string; redirect: string; children?: Array<any>}, level?: string) => {
+  if (level === "first") {
+    const has = (route?.children ?? []).find((item) => item.name === route.redirect);
+    if (has) {
+      ROUTER.push({path: route.name});
+    } else {
+      const {name} = menus.value.find((item: {name: string}) => item.name === route.name).children[0];
+      ROUTER.push({path: name});
+    }
+  } else {
+    ROUTER.push({path: route.name});
+  }
 };
 
 watch(

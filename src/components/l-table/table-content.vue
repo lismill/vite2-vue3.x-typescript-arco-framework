@@ -1,11 +1,12 @@
 <template>
-  <div v-if="config.table?.columns?.length" class="l-table-content m-b24">
+  <div v-if="config.table?.columns?.length" class="l-table-content mb-[24px]">
     <m-table
       v-bind="{...defaultConfig, ...config.table?.others}"
       :columns="config.table.columns"
       :data="config.table.data"
       :selected-keys="selectedRowKeys()"
       @selection-change="selectionChange"
+      @sorter-change="(dataIndex: string, direction: string) => emits('sorter:change', dataIndex, direction)"
     >
       <!-- 内容 -->
       <template #columns>
@@ -41,6 +42,7 @@ import {reactive} from "vue";
 
 const props = defineProps<{config: any}>();
 const config = reactive(props.config);
+const emits = defineEmits(["sorter:change"]);
 
 /**
  * 选择数据

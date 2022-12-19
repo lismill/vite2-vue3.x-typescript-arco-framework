@@ -11,7 +11,12 @@
       </m-button>
     </template>
     <!-- 编辑表格 -->
-    <m-table class="m-t16" v-bind="{...defaultConfig, ...config.others}" :columns="config.columns" :data="config.data">
+    <m-table
+      class="mt-[16px]"
+      v-bind="{...defaultConfig, ...config.others}"
+      :columns="config.columns"
+      :data="config.data"
+    >
       <!-- 内容 -->
       <template #columns>
         <m-table-column

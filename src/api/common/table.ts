@@ -1,22 +1,5 @@
 import request from "@/packages/axios";
 
-export function getTableList(params: any) {
-  return request({
-    url: "/api/getTableList",
-    method: "get",
-    params,
-  });
-}
-export function getDictList(params: any) {
-  return request({
-    url: "/api/getDictList",
-    method: "get",
-    params,
-  });
-}
-export function getSearchRemoteList() {
-  return request({
-    url: "/api/getSearchRemoteList",
-    method: "get",
-  });
-}
+export const getTableList = (params: any) => request.get("/api/getTableList", {params});
+export const getDictList = (params: any) => request.get("/api/getDictList", {params});
+export const getSearchRemoteList = (params: any) => request.get("/api/getSearchRemoteList", {params});

@@ -1,11 +1,11 @@
 <template>
-  <div v-if="config.form?.data && config.sections?.length" class="l-form p-t24">
-    <h3 v-if="config.form?.title" class="p-lr24">{{ config.form.title }}</h3>
+  <div v-if="config.form?.data && config.sections?.length" class="l-form pt-[24px]">
+    <h3 v-if="config.form?.title" class="pl-[24px] pr-[24px]">{{ config.form.title }}</h3>
     <!-- 表单项 -->
-    <div class="m-lr24">
+    <div class="ml-[24px] mr-[24px]">
       <m-form
         ref="formRef"
-        class="p-b24"
+        class="pb-[24px]"
         :auto-label-width="true"
         :model="config.form.data"
         v-bind="config.form.others"
@@ -13,12 +13,21 @@
         @submit-failed="handleSubmitFailed"
       >
         <div v-for="(section, index) in config.sections" :key="index">
-          <div v-if="section.title" class="section-title m-b24">{{ section.title }}</div>
-          <div class="p-l24" :class="[config?.dialog ? '' : 'p-b56']">
+          <div v-if="section.title" class="section-title mb-[24px]">{{ section.title }}</div>
+          <div
+            class="pl-[24px]"
+            :class="[config?.dialog ? '' : index + 1 === config.sections.length ? 'pb-[56px]' : 'pb-[4px]']"
+          >
             <template v-for="item in section.items" :key="item.name">
               <m-col v-if="item.type && item.type !== 'hidden'" :span="getSpan(item.size)">
                 <!-- text -->
-                <m-form-item v-if="item.type === 'text'" :field="item.name" :label="item.label" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'text'"
+                  :field="item.name"
+                  :label="item.label"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <div class="l-h32" v-html="config.form.data[item.name]"></div>
                   <template v-if="item.info" #extra>
@@ -26,7 +35,13 @@
                   </template>
                 </m-form-item>
                 <!-- switch -->
-                <m-form-item v-if="item.type === 'switch'" :field="item.name" :label="item.label" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'switch'"
+                  :field="item.name"
+                  :label="item.label"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-switch
                     v-model="config.form.data[item.name]"
@@ -39,7 +54,13 @@
                   </template>
                 </m-form-item>
                 <!-- input -->
-                <m-form-item v-if="item.type === 'input'" :field="item.name" :label="item.label" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'input'"
+                  :field="item.name"
+                  :label="item.label"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-input
                     v-model="config.form.data[item.name]"
@@ -54,7 +75,12 @@
                   </template>
                 </m-form-item>
                 <!-- textarea -->
-                <m-form-item v-if="item.type === 'textarea'" :field="item.name" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'textarea'"
+                  :field="item.name"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-textarea
                     v-model="config.form.data[item.name]"
@@ -71,7 +97,7 @@
                   </template>
                 </m-form-item>
                 <!-- number -->
-                <m-form-item v-if="item.type === 'number'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'number'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-input-number
                     v-model="config.form.data[item.name]"
@@ -84,7 +110,7 @@
                   </template>
                 </m-form-item>
                 <!-- select -->
-                <m-form-item v-if="item.type === 'select'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'select'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-select
                     v-model="config.form.data[item.name]"
@@ -101,7 +127,12 @@
                   </template>
                 </m-form-item>
                 <!-- select-search -->
-                <m-form-item v-if="item.type === 'select-search'" :field="item.name" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'select-search'"
+                  :field="item.name"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <l-form-select-search
                     :placeholder="`请选择${item.label}`"
@@ -113,7 +144,12 @@
                   </template>
                 </m-form-item>
                 <!-- cascader -->
-                <m-form-item v-if="item.type === 'cascader'" :field="item.name" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'cascader'"
+                  :field="item.name"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-cascader
                     v-model="config.form.data[item.name]"
@@ -131,7 +167,7 @@
                   </template>
                 </m-form-item>
                 <!-- radio -->
-                <m-form-item v-if="item.type === 'radio'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'radio'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-radio-group
                     v-model="config.form.data[item.name]"
@@ -144,7 +180,12 @@
                   </template>
                 </m-form-item>
                 <!-- checkbox -->
-                <m-form-item v-if="item.type === 'checkbox'" :field="item.name" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'checkbox'"
+                  :field="item.name"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-checkbox-group
                     v-model="config.form.data[item.name]"
@@ -157,7 +198,7 @@
                   </template>
                 </m-form-item>
                 <!-- phone -->
-                <m-form-item v-if="item.type === 'phone'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'phone'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-input-group>
                     <m-select
@@ -187,7 +228,7 @@
                   </template>
                 </m-form-item>
                 <!-- date -->
-                <m-form-item v-if="item.type === 'date'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'date'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-date-picker
                     v-model="config.form.data[item.name]"
@@ -202,7 +243,7 @@
                   </template>
                 </m-form-item>
                 <!-- time -->
-                <m-form-item v-if="item.type === 'time'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'time'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-time-picker
                     v-model="config.form.data[item.name]"
@@ -217,7 +258,12 @@
                   </template>
                 </m-form-item>
                 <!-- daterange -->
-                <m-form-item v-if="item.type === 'daterange'" :field="item.name" :rules="item.rules">
+                <m-form-item
+                  v-if="item.type === 'daterange'"
+                  :field="item.name"
+                  :rules="item.rules"
+                  v-bind="item.others"
+                >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <m-range-picker
                     v-model="config.form.data[item.name]"
@@ -232,7 +278,7 @@
                   </template>
                 </m-form-item>
                 <!-- upload -->
-                <m-form-item v-if="item.type === 'upload'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'upload'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <l-upload-file
                     :config="{
@@ -247,7 +293,7 @@
                   </template>
                 </m-form-item>
                 <!-- editor -->
-                <m-form-item v-if="item.type === 'editor'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'editor'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <l-editor
                     :config="{
@@ -262,7 +308,7 @@
                   </template>
                 </m-form-item>
                 <!-- slot -->
-                <m-form-item v-if="item.type === 'slot'" :field="item.name" :rules="item.rules">
+                <m-form-item v-if="item.type === 'slot'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
                   <div class="l-h32">
                     <slot :name="item.name ?? ''" :form="config.form" :item="item"></slot>
@@ -285,11 +331,12 @@
         >
           <m-space :size="4">
             <!-- left -->
+            <slot name="footer-custom-left"></slot>
             <template v-if="config.form?.operates?.left?.length">
               <m-button
                 v-for="item in OPERATES_LEFT"
                 :key="item.name"
-                class="m-lr4"
+                class="ml-[4px] mr-[4px]"
                 v-bind="item.others"
                 @click="() => emits('operate', item.name)"
               >
@@ -298,17 +345,21 @@
             </template>
             <!-- no-center -->
             <template v-if="!config.form?.operates?.center">
-              <m-button v-if="config.form?.operates?.centerShowResetButton" class="m-lr4" @click="() => resetFields()">
-                重置
+              <m-button
+                v-if="config.form?.operates?.centerShowResetButton"
+                class="ml-[4px] mr-[4px]"
+                @click="() => resetFields()"
+              >
+                {{ config.form?.operates?.centerResetButtonText ?? "重置" }}
               </m-button>
               <m-button
                 v-if="config.form?.operates?.centerShowSubmitButton"
                 :loading="buttonLoading"
-                class="m-lr4"
+                class="ml-[4px] mr-[4px]"
                 type="primary"
                 html-type="submit"
               >
-                保存
+                {{ config.form?.operates?.centerSubmitButtonText ?? "保存" }}
               </m-button>
             </template>
             <!-- center -->
@@ -316,7 +367,7 @@
               <m-button
                 v-for="item in OPERATES_CENTER"
                 :key="item.name"
-                class="m-lr4"
+                class="ml-[4px] mr-[4px]"
                 v-bind="item.others"
                 @click="() => emits('operate', item.name)"
               >
@@ -334,6 +385,7 @@
                 {{ item.name }}
               </m-button>
             </template>
+            <slot name="footer-custom-right"></slot>
           </m-space>
         </footer>
       </m-form>
@@ -514,6 +566,19 @@ defineExpose({resetFields, validate, cancelButtonLoading});
     &.scroll {
       box-shadow: -2px -2px 8px 0px #eeeeee;
     }
+  }
+  :deep(.arco-form-item-label) {
+    display: flex;
+    align-items: center;
+  }
+  :deep(.arco-form-item-label span) {
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+  }
+  :deep(.arco-form-item-label-required-symbol) {
+    position: relative;
+    top: -1px;
   }
 }
 </style>

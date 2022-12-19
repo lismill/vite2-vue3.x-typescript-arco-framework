@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-ffffff p-24">
+  <l-content title="编辑表格">
     <l-table-edit :config="deepConfig">
       <template #custom>custom-slot</template>
     </l-table-edit>
-    <div class="m-t16">
+    <div class="mt-[16px]">
       {{ deepConfig.data }}
     </div>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

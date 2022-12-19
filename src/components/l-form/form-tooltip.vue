@@ -3,7 +3,7 @@
     {{ label }}
     <m-tooltip v-if="tooltip" position="right">
       <template #content>
-        <span class="font-13" v-html="tooltip"></span>
+        <span class="text-[13px]" v-html="tooltip"></span>
       </template>
       <span class="tooltip"><l-ify-icon name="ant-design:question-circle-filled" color="#666666" /></span>
     </m-tooltip>
@@ -20,5 +20,7 @@ defineProps<{
 <style scoped lang="scss">
 .tooltip {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 </style>

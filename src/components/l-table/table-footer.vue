@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="config.footer?.pagination?.total > 10"
-    class="l-table-footer flex"
+    class="l-table-footer flex items-center"
     :style="{justifyContent: config.footer.operates ? 'space-between' : 'flex-end'}"
   >
     <!-- 左侧操作 -->
@@ -9,7 +9,7 @@
       <m-button
         v-for="item in config.footer.operates"
         :key="item.name"
-        class="m-r8"
+        class="mr-[8px]"
         v-bind="item.others"
         @click="emits('operate', item.name)"
       >

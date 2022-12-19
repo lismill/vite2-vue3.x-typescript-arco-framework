@@ -1,6 +1,5 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">拖拽插件</h3>
+  <l-content title="拖拽插件">
     <l-draggable v-bind="config" @update:data="(data) => (config.list = data)">
       <template #default="{element, index}">
         <div class="item">
@@ -9,8 +8,8 @@
         </div>
       </template>
     </l-draggable>
-    <p class="m-t16">{{ config.list }}</p>
-  </div>
+    <p class="mt-[16px]">{{ config.list }}</p>
+  </l-content>
 </template>
 
 <script setup lang="ts">

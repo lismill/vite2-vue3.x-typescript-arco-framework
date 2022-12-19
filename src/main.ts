@@ -5,6 +5,7 @@ import App from "@/App.vue";
 import router from "@/router";
 import {setupComponents} from "@/components/index";
 import {setupDirectives} from "./utils/directives";
+import "virtual:windi.css";
 import "@arco-design/web-vue/dist/arco.less";
 import "virtual:svg-icons-register";
 import "@purge-icons/generated";

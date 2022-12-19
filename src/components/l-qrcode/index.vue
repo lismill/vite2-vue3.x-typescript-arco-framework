@@ -1,6 +1,6 @@
 <template>
   <!-- header -->
-  <div v-if="!!$slots.header" class="header m-b8">
+  <div v-if="!!$slots.header" class="header mb-[8px]">
     <slot name="header"></slot>
   </div>
   <div v-if="type === 'canvas'" :id="ID" class="qrcode qrcode-canvas"></div>
@@ -8,11 +8,11 @@
     <img :id="ID" :style="{width: `${width}px`, height: `${width}px`}" />
   </div>
   <!-- footer -->
-  <div v-if="!!$slots.footer" class="footer m-t6">
+  <div v-if="!!$slots.footer" class="footer mt-[6px]">
     <slot name="footer"></slot>
   </div>
   <!-- download -->
-  <div v-if="!!$slots.download" class="download m-t6">
+  <div v-if="!!$slots.download" class="download mt-[6px]">
     <slot name="download"></slot>
   </div>
 </template>

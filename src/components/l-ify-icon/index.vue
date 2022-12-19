@@ -36,9 +36,3 @@ withDefaults(
   },
 );
 </script>
-<style scoped lang="scss">
-.iconify {
-  position: relative;
-  top: 3px;
-}
-</style>

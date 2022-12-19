@@ -1,6 +1,5 @@
 <template>
-  <div class="dashboard bg-ffffff p-24">
-    <h3 class="page-title m-b24">下拉搜索</h3>
+  <l-content title="下拉搜索">
     <div style="width: 320px">
       <l-form-select-search
         placeholder="请输入关键词"
@@ -12,8 +11,8 @@
       ></l-form-select-search>
     </div>
 
-    <div class="m-t16">{{ current }}</div>
-  </div>
+    <div class="mt-[16px]">{{ current }}</div>
+  </l-content>
 </template>
 <script setup lang="ts">
 import {getSearchRemoteList} from "@/api/common/table";

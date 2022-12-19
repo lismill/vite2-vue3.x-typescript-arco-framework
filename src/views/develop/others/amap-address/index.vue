@@ -1,7 +1,7 @@
 <template>
   <l-content title="地图地址">
     <l-amap-address :areas="areas" @change="change"></l-amap-address>
-    <div class="m-t16">表单数据 - {{ data }}</div>
+    <div class="mt-[16px]">表单数据 - {{ data }}</div>
   </l-content>
 </template>
 

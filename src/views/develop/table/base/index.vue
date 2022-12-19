@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <l-table :config="deepConfig" @operate="handleOperate">
+  <l-content>
+    <l-table :config="deepConfig" @operate="handleOperate" @sorter:change="sorterChange">
       <!-- 自定义头部插槽 -->
       <template #custom-header><m-alert :show-icon="false">自定义头部插槽</m-alert></template>
 
@@ -17,7 +17,7 @@
 
       <!-- 自定义表格插槽 -->
       <template #image>
-        <div class="flex">
+        <div class="flex items-center">
           <l-popover-image
             :config="{
               popover: {
@@ -30,7 +30,7 @@
               <img style="width: 36px; height: 36px; border-radius: 50%" src="https://i.postimg.cc/8kq8ZyL2/lean.png" />
             </template>
           </l-popover-image>
-          <div class="m-l10">
+          <div class="ml-[10px]">
             <p>Lean</p>
             <p>123456789@163.com</p>
           </div>
@@ -43,7 +43,7 @@
         ></l-table-operate>
       </template>
     </l-table>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">
@@ -56,6 +56,13 @@ import {useMessage} from "@/hooks/useMessage";
 
 const ROUTER = useRouter();
 const deepConfig = reactive(useCloneDeep(config));
+
+/**
+ * 自定义排序
+ * @param dataIndex
+ * @param direction
+ */
+const sorterChange = (dataIndex: string, direction: string) => console.log(dataIndex, direction);
 
 /**
  * 模拟设置已选数据

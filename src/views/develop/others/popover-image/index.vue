@@ -1,19 +1,18 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">气泡图片</h3>
+  <l-content title="气泡图片">
     <!-- 简单使用 -->
     <l-popover-image :config="config1"> </l-popover-image>
 
     <!-- 简单使用 -->
-    <l-popover-image :config="config2" class="m-t16"> </l-popover-image>
+    <l-popover-image :config="config2" class="mt-[16px]"> </l-popover-image>
 
     <!-- 自定义 -->
-    <l-popover-image :config="config3" class="m-t16">
+    <l-popover-image :config="config3" class="mt-[16px]">
       <template #custom-trigger>
         <m-button>自定义</m-button>
       </template>
     </l-popover-image>
-  </div>
+  </l-content>
 </template>
 <script setup lang="ts">
 import {ILPopoverImage} from "@/components/l-popover-image/interface";

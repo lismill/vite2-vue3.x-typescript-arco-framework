@@ -1,6 +1,8 @@
 <template>
-  <div class="bg-ffffff">
+  <l-content class="p-[0px]">
     <l-form ref="refForm" :config="deepConfig" @submit="submit" @operate="handleOperate">
+      <template #footer-custom-left>左侧插槽</template>
+      <template #footer-custom-right>右侧插槽</template>
       <template #slotName="{item}">
         <m-input
           v-model="deepConfig.form.data[item.name]"
@@ -9,7 +11,7 @@
         ></m-input>
       </template>
     </l-form>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

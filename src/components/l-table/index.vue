@@ -3,7 +3,7 @@
     <h3 v-if="config.title">{{ config.title }}</h3>
     <m-spin :loading="loading" :size="28">
       <!-- 自定义头部插槽 -->
-      <div v-if="customHeader" class="m-b24">
+      <div v-if="customHeader" class="mb-[24px]">
         <slot name="custom-header" :datas="{tableData, config}"></slot>
       </div>
       <!-- 表格搜索 -->
@@ -16,20 +16,28 @@
       <!-- 表格状态栏 -->
       <table-status :config="config" @change="queryData"></table-status>
       <!-- 表格工具栏 -->
-      <table-toolbar :config="config" @operate="(name) => emits('operate', name)"></table-toolbar>
+      <table-toolbar :config="config" @operate="(name) => emits('operate', name)">
+        <!-- 自定义表格插槽 -->
+        <template v-for="slot in slots" :key="slot" #[slot]="rows">
+          <slot :name="slot" :rows="rows.rows" :index="rows.index"></slot>
+        </template>
+      </table-toolbar>
       <!-- 自定义中间插槽 -->
-      <div v-if="customCenter" class="m-b24">
+      <div v-if="customCenter" class="mb-[24px]">
         <slot name="custom-center" :datas="{tableData, config}"></slot>
       </div>
       <!-- 表格内容 -->
-      <table-content :config="config">
+      <table-content
+        :config="config"
+        @sorter:change="(dataIndex: string, direction: string) => emits('sorter:change', dataIndex, direction)"
+      >
         <!-- 自定义表格插槽 -->
         <template v-for="slot in slots" :key="slot" #[slot]="rows">
           <slot :name="slot" :rows="rows.rows" :index="rows.index"></slot>
         </template>
       </table-content>
       <!-- 自定义底部插槽 -->
-      <div v-if="customFooter" class="m-tb24">
+      <div v-if="customFooter" class="mt-[24px] mb-[24px]">
         <slot name="custom-footer" :datas="{tableData, config}"></slot>
       </div>
       <!-- 表格底部 -->
@@ -52,7 +60,7 @@ import tableFooter from "./table-footer.vue";
 
 const props = defineProps<{config: any}>();
 const config = reactive(props.config);
-const emits = defineEmits(["operate", "queryData"]);
+const emits = defineEmits(["operate", "queryData", "sorter:change", "data:change"]);
 const slots = Object.keys(useSlots());
 const tableData = ref();
 const customHeader = !!useSlots()["custom-header"];
@@ -95,6 +103,7 @@ const queryData = async (type?: string) => {
       config?.table?.selectedRows && (config.table.selectedRows = []);
     }
     config.footer?.pagination && (config.footer.pagination.total = res.data.total);
+    emits("data:change", res.data);
   } catch (error) {
     console.log(error);
   }

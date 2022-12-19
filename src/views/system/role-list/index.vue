@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-ffffff p-24">
+  <l-content>
     <l-table :config="deepConfig" @operate="operateHandler">
       <template #information="{rows}">
         <div class="info">
@@ -25,7 +25,7 @@
         ></l-table-operate>
       </template>
     </l-table>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

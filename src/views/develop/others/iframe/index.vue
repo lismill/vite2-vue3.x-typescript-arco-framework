@@ -1,8 +1,7 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">Iframe</h3>
+  <l-content title="Iframe">
     <l-iframe src="https://cn.bing.com/"></l-iframe>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts"></script>

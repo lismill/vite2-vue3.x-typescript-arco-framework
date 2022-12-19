@@ -1,8 +1,9 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <m-button type="primary" @click="deepConfig.dialog.visible = true">弹出表单</m-button>
-    <div class="m-t16">{{ deepConfig.form.data }}</div>
+  <l-content title="弹出表单">
+    <m-button type="primary" @click="refLFormDialog.open()">弹出表单</m-button>
+    <div class="mt-[16px]">{{ deepConfig.form.data }}</div>
     <l-form-dialog
+      ref="refLFormDialog"
       :config="deepConfig"
       :default-form-data="useCloneDeep(config.form.data)"
       @submit="submit"
@@ -17,7 +18,7 @@
         ></m-input>
       </template>
     </l-form-dialog>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +27,7 @@ import {useCloneDeep} from "@/hooks/useCloneDeep";
 import {config} from "./config";
 
 const deepConfig = reactive(useCloneDeep(config));
+const refLFormDialog = ref();
 
 /**
  * 提交表单成功

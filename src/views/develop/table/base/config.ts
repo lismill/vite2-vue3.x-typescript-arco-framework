@@ -90,6 +90,9 @@ export const config: ILTable = {
         others: {
           ellipsis: true,
           tooltip: true,
+          sortable: {
+            sortDirections: ["ascend", "descend"],
+          },
         },
       },
       {

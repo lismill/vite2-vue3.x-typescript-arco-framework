@@ -1,11 +1,11 @@
 <template>
   <div class="l-permission-item" :style="{height: collapsed ? '64px' : '400px'}">
-    <header class="p-l18 p-r18 flex" :class="[checkeds?.length ? 'hasBg' : '']">
+    <header class="pl-[18px] pr-[18px] flex items-center" :class="[checkeds?.length ? 'hasBg' : '']">
       <m-checkbox :model-value="checkedAll" :indeterminate="indeterminate" @change="handleChangeAll">
-        <span class="line">
-          <span v-if="icon" class="bg"><img :src="icon" /></span>
-          {{ config.name }}
-        </span>
+        <div class="line flex">
+          <div v-if="icon" class="bg"><img :src="icon" /></div>
+          <div>{{ config.name }}</div>
+        </div>
       </m-checkbox>
       <div class="icon">
         <l-ify-icon
@@ -28,7 +28,7 @@
     </header>
     <CustomVueScrollbar style="max-height: 333px; border-radius: 4px">
       <transition name="fade">
-        <footer v-show="!collapsed" class="p-l18 p-b12">
+        <footer v-show="!collapsed" class="pl-[18px] pb-[12px]">
           <m-checkbox-group v-model="checkeds" direction="vertical" @change="handleChange">
             <m-checkbox v-for="item in children" :key="item.name" :value="item.permission">
               {{ item.name }}
@@ -109,16 +109,10 @@ const handleChange = (values: string | any[]) => {
       background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
     }
     .line {
-      position: relative;
-      top: 1px;
-      width: 1px;
-      height: 19px;
-      border-left: 2px solid #dddee1;
-      margin-left: 10px;
-      padding-left: 16px;
       .bg {
         margin-right: 2px;
         img {
+          margin: 0 8px 0 6px;
           position: relative;
           top: 12px;
           width: 36px;

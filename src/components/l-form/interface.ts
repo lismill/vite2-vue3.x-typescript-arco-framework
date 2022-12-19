@@ -30,7 +30,9 @@ export interface ILForm {
      * 底部操作按钮
      * - left? - 底部左侧操作按钮
      * - centerShowResetButton? - 底部中间重置按钮
+     * - centerResetButtonText? - 底部中间重置按钮文案
      * - centerShowSubmitButton? - 底部中间保存按钮
+     * - centerSubmitButtonText? - 底部中间保存按钮文案
      * - center? - 底部中间操作按钮
      * - right? - 底部右侧操作按钮
      */
@@ -44,9 +46,17 @@ export interface ILForm {
        */
       centerShowResetButton?: boolean;
       /**
+       * 底部中间重置按钮文案
+       */
+      centerResetButtonText?: string;
+      /**
        * 底部中间保存按钮
        */
       centerShowSubmitButton?: boolean;
+      /**
+       * 底部中间保存按钮文案
+       */
+      centerSubmitButtonText?: string;
       /**
        * 底部中间操作按钮
        */

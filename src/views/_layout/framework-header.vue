@@ -1,11 +1,11 @@
 <template>
   <div class="framework-header">
-    <div class="framework-header-content flex">
-      <div class="left flex">
+    <div class="framework-header-content flex items-center">
+      <div class="left flex items-center">
         <img class="logo" src="@/assets/images/common/logo.png" alt="logo.png" />
         <span>中后台管理系统</span>
       </div>
-      <div class="right flex">
+      <div class="right flex items-center">
         <template v-if="useEnv('development')">
           <div class="fullscreen">
             <span
@@ -19,7 +19,7 @@
               <l-ify-icon name="emojione-v1:confounded-face" size="18"></l-ify-icon>
             </span>
           </div>
-          <div class="m-lr16 line"></div>
+          <div class="ml-[16px] mr-[16px] line"></div>
         </template>
         <m-dropdown trigger="hover" @select="selectDropdown">
           <div class="userinfo cursor-pointer">超级管理员</div>

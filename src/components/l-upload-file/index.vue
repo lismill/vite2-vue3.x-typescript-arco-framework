@@ -14,7 +14,7 @@
           <span class="plus" style="font-size: 20px; font-weight: 500; color: #888888">+</span>
         </template>
         <template v-else>
-          <m-button class="flex">
+          <m-button class="flex items-center">
             <l-ify-icon name="carbon:add" size="20" style="margin-left: -6px"></l-ify-icon>
             选择文件
           </m-button>

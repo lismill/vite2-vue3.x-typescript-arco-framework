@@ -11,7 +11,7 @@
       </m-button>
     </template>
     <!-- 已选表格 -->
-    <div class="m-t16">
+    <div class="mt-[16px]">
       <l-table :config="chooseConfig">
         <template #operate="{index}">
           <l-table-operate

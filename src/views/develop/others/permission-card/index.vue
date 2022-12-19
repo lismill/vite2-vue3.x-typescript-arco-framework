@@ -1,13 +1,12 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">权限设置（卡片）</h3>
+  <l-content title="权限设置（卡片）">
     <div class="l-permission" style="display: flex">
-      <div v-for="(menu, index) in menus" :key="menu.name" class="m-r16">
+      <div v-for="(menu, index) in menus" :key="menu.name" class="mr-[16px]">
         <l-permission-card :config="menu" :index="index" @change="change"></l-permission-card>
       </div>
     </div>
-    <div class="m-t16 m-b32">{{ checkeds }}</div>
-  </div>
+    <div class="mt-[16px]">{{ checkeds }}</div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

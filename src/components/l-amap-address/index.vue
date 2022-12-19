@@ -15,25 +15,25 @@
     </div>
     <m-textarea
       v-model="form.address"
-      class="m-t16"
+      class="mt-[16px]"
       style="width: 768px"
       placeholder="请输入详细地址"
       allow-clear
       @change="search"
     ></m-textarea>
   </div>
-  <div class="p-24 amap">
+  <div class="p-[24px] amap">
     <div class="flex">
-      <div class="flex">
-        <div class="m-r16 label">经度</div>
+      <div class="flex items-center">
+        <div class="mr-[16px] label">经度</div>
         <m-input v-model="form.lng" style="width: 300px" placeholder="请输入"></m-input>
       </div>
-      <div class="flex m-l32">
-        <div class="m-r16 label">纬度</div>
+      <div class="flex items-center ml-[32px]">
+        <div class="mr-[16px] label">纬度</div>
         <m-input v-model="form.lat" style="width: 300px" placeholder="请输入"></m-input>
       </div>
     </div>
-    <div class="m-t24" style="width: 720px">
+    <div class="mt-[24px]" style="width: 720px">
       <l-amap :custom-map="customMap"></l-amap>
     </div>
   </div>

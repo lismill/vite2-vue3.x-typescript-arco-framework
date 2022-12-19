@@ -121,6 +121,22 @@ export default {
           },
         },
         {
+          path: "statistic-card",
+          name: "/develop/others/statistic-card",
+          component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/others/statistic-card/index.vue"),
+          meta: {
+            title: "统计值卡片",
+          },
+        },
+        {
+          path: "statistic-data",
+          name: "/develop/others/statistic-data",
+          component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/others/statistic-data/index.vue"),
+          meta: {
+            title: "统计值数据",
+          },
+        },
+        {
           path: "vuedraggable",
           name: "/develop/others/vuedraggable",
           component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/others/vuedraggable/index.vue"),

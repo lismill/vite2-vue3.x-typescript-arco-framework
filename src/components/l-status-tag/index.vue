@@ -1,6 +1,6 @@
 <template>
   <span class="l-status-tag flex">
-    <span :class="['m-r8', 'tag-type', `tag-type-${type}`]"></span>
+    <span :class="['mr-[8px]', 'tag-type', `tag-type-${type}`]"></span>
     <span class="tag-title">{{ title }}</span>
   </span>
 </template>

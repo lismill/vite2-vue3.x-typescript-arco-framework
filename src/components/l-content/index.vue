@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-ffffff p-24 rounded-8">
-    <h3 class="section-title">{{ title }}</h3>
+  <div class="p-[24px] bg-white rounded-[8px]">
+    <h3 v-if="title" class="section-title">{{ title }}</h3>
     <slot></slot>
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{title: string}>();
+defineProps<{title?: string}>();
 </script>

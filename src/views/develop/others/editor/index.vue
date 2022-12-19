@@ -1,9 +1,8 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">富文本编辑器</h3>
+  <l-content title="富文本编辑器">
     <l-editor :config="config" @change="(html) => (content = html)"></l-editor>
     <div class="m-t16">{{ content }}</div>
-  </div>
+  </l-content>
 </template>
 
 <script setup lang="ts">

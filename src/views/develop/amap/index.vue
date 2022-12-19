@@ -1,11 +1,10 @@
 <template>
-  <div class="bg-ffffff p-24">
-    <h3 class="page-title m-b24">简单使用场景</h3>
+  <l-content title="简单使用场景">
     <simple></simple>
-
-    <h3 class="page-title m-b24" style="margin-top: 32px">复杂使用场景</h3>
+  </l-content>
+  <l-content title="复杂使用场景" class="mt-[16px]">
     <complex></complex>
-  </div>
+  </l-content>
 </template>
 <script setup lang="ts">
 import Simple from "./simple.vue";
