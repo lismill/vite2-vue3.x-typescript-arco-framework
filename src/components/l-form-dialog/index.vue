@@ -23,7 +23,7 @@
         <m-button
           v-for="item in config.form.operates.left"
           :key="item.name"
-          class="ml-[4px] mr-[4px]"
+          class="mx-[4px]"
           v-bind="item.others"
           @click="() => emits('operate', item.name)"
         >
@@ -32,21 +32,17 @@
       </template>
       <!-- no-center -->
       <template v-if="!config.form?.operates?.center">
-        <m-button
-          v-if="config.form?.operates?.centerShowResetButton"
-          class="ml-[4px] mr-[4px]"
-          @click="() => resetFields()"
-        >
+        <m-button v-if="config.form?.operates?.centerShowResetButton" class="mx-[4px]" @click="() => resetFields()">
           重置
         </m-button>
-        <m-button class="ml-[4px] mr-[4px]" type="primary" :loading="loading" @click="() => submit()">保存</m-button>
+        <m-button class="mx-[4px]" type="primary" :loading="loading" @click="() => submit()">保存</m-button>
       </template>
       <!-- center -->
       <template v-if="config.form?.operates?.center?.length">
         <m-button
           v-for="item in config.form.operates.center"
           :key="item.name"
-          class="ml-[4px] mr-[4px]"
+          class="mx-[4px]"
           v-bind="item.others"
           @click="() => emits('operate', item.name)"
         >

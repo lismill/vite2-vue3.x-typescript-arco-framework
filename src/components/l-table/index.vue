@@ -37,7 +37,7 @@
         </template>
       </table-content>
       <!-- 自定义底部插槽 -->
-      <div v-if="customFooter" class="mt-[24px] mb-[24px]">
+      <div v-if="customFooter" class="my-[24px]">
         <slot name="custom-footer" :datas="{tableData, config}"></slot>
       </div>
       <!-- 表格底部 -->

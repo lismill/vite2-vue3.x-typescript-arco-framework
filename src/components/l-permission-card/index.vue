@@ -1,6 +1,6 @@
 <template>
   <div class="l-permission-item" :style="{height: collapsed ? '64px' : '400px'}">
-    <header class="pl-[18px] pr-[18px] flex items-center" :class="[checkeds?.length ? 'hasBg' : '']">
+    <header class="px-[18px] flex items-center" :class="[checkeds?.length ? 'hasBg' : '']">
       <m-checkbox :model-value="checkedAll" :indeterminate="indeterminate" @change="handleChangeAll">
         <div class="line flex">
           <div v-if="icon" class="bg"><img :src="icon" /></div>

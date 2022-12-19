@@ -19,7 +19,7 @@
               <l-ify-icon name="emojione-v1:confounded-face" size="18"></l-ify-icon>
             </span>
           </div>
-          <div class="ml-[16px] mr-[16px] line"></div>
+          <div class="mx-[16px] line"></div>
         </template>
         <m-dropdown trigger="hover" @select="selectDropdown">
           <div class="userinfo cursor-pointer">超级管理员</div>

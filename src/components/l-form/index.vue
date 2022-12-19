@@ -1,8 +1,8 @@
 <template>
   <div v-if="config.form?.data && config.sections?.length" class="l-form pt-[24px]">
-    <h3 v-if="config.form?.title" class="pl-[24px] pr-[24px]">{{ config.form.title }}</h3>
+    <h3 v-if="config.form?.title" class="px-[24px]">{{ config.form.title }}</h3>
     <!-- 表单项 -->
-    <div class="ml-[24px] mr-[24px]">
+    <div class="mx-[24px]">
       <m-form
         ref="formRef"
         class="pb-[24px]"
@@ -336,7 +336,7 @@
               <m-button
                 v-for="item in OPERATES_LEFT"
                 :key="item.name"
-                class="ml-[4px] mr-[4px]"
+                class="mx-[4px]"
                 v-bind="item.others"
                 @click="() => emits('operate', item.name)"
               >
@@ -347,7 +347,7 @@
             <template v-if="!config.form?.operates?.center">
               <m-button
                 v-if="config.form?.operates?.centerShowResetButton"
-                class="ml-[4px] mr-[4px]"
+                class="mx-[4px]"
                 @click="() => resetFields()"
               >
                 {{ config.form?.operates?.centerResetButtonText ?? "重置" }}
@@ -355,7 +355,7 @@
               <m-button
                 v-if="config.form?.operates?.centerShowSubmitButton"
                 :loading="buttonLoading"
-                class="ml-[4px] mr-[4px]"
+                class="mx-[4px]"
                 type="primary"
                 html-type="submit"
               >
@@ -367,7 +367,7 @@
               <m-button
                 v-for="item in OPERATES_CENTER"
                 :key="item.name"
-                class="ml-[4px] mr-[4px]"
+                class="mx-[4px]"
                 v-bind="item.others"
                 @click="() => emits('operate', item.name)"
               >
