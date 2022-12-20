@@ -47,12 +47,15 @@ export const config: ILForm = {
           type: "number",
           label: "数字",
           name: "number",
-          size: "mini",
+          size: "large",
           rules: [{required: true, message: "请输入数字"}],
-          info: "这是一段自定义文案 size: mini",
+          info: "这是一段自定义文案, 这是一段自定义文案, 这是一段自定义文案, 这是一段自定义文案",
           tooltip: "当某个页面<br />需要向用户显示警告的信息时<br />当某个页面需要向用户显示警告的信息时",
           others: {
             addonAfter: "元",
+            itemStyle: {
+              width: "318px",
+            },
           },
         },
         {
@@ -151,6 +154,9 @@ export const config: ILForm = {
           info: "这是一段自定义文案 size: medium",
           tooltip: "当某个页面<br />需要向用户显示警告的信息时<br />当某个页面需要向用户显示警告的信息时",
           others: {
+            itemStyle: {
+              width: "318px",
+            },
             prepend: {
               name: "phone_prepend",
               options: [

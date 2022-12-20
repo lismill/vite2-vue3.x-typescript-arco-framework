@@ -29,7 +29,7 @@
                   v-bind="item.others"
                 >
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
-                  <div class="l-h32" v-html="config.form.data[item.name]"></div>
+                  <div class="l-h32" :style="item.others?.itemStyle" v-html="config.form.data[item.name]"></div>
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
                   </template>
@@ -48,6 +48,7 @@
                     :default-checked="false"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -69,6 +70,7 @@
                     :placeholder="`请输入${item.label}`"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -91,6 +93,7 @@
                     :placeholder="`请输入${item.label}`"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -104,6 +107,7 @@
                     :placeholder="`请输入${item.label}`"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -121,6 +125,7 @@
                     :placeholder="`请选择${item.label}`"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -137,6 +142,7 @@
                   <l-form-select-search
                     :placeholder="`请选择${item.label}`"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                     @change="(v) => (config.form.data[item.name] = v)"
                   />
                   <template v-if="item.info" #extra>
@@ -160,6 +166,7 @@
                     :placeholder="`请选择${item.label}`"
                     :disabled="config.form?.disabled ?? false"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   >
                   </m-cascader>
                   <template v-if="item.info" #extra>
@@ -174,6 +181,7 @@
                     :disabled="config.form?.disabled ?? false"
                     :options="item.options"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -192,6 +200,7 @@
                     :disabled="config.form?.disabled ?? false"
                     :options="item.options"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -200,7 +209,7 @@
                 <!-- phone -->
                 <m-form-item v-if="item.type === 'phone'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
-                  <m-input-group>
+                  <m-input-group :style="item.others?.itemStyle">
                     <m-select
                       v-if="item.others?.prepend"
                       v-model="config.form.data[item.others?.prepend?.name]"
@@ -237,6 +246,7 @@
                     :disabled="config.form?.disabled ?? false"
                     style="width: 100%"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -252,6 +262,7 @@
                     :disabled="config.form?.disabled ?? false"
                     style="width: 100%"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -272,6 +283,7 @@
                     :disabled="config.form?.disabled ?? false"
                     value-format="YYYY-MM-DD HH:mm:ss"
                     v-bind="item.others"
+                    :style="item.others?.itemStyle"
                   />
                   <template v-if="item.info" #extra>
                     <form-info :info="item.info"></form-info>
@@ -310,7 +322,7 @@
                 <!-- slot -->
                 <m-form-item v-if="item.type === 'slot'" :field="item.name" :rules="item.rules" v-bind="item.others">
                   <template #label><form-tooltip v-bind="item"></form-tooltip></template>
-                  <div class="l-h32">
+                  <div class="l-h32" :style="item.others?.itemStyle">
                     <slot :name="item.name ?? ''" :form="config.form" :item="item"></slot>
                   </div>
                   <template v-if="item.info" #extra>
