@@ -1,1 +1,0 @@
-import{s as t}from"./index.283234c7.js";function e(e){return t({url:"/api/getTableList",method:"get",params:e})}function r(e){return t({url:"/api/getDictList",method:"get",params:e})}function a(){return t({url:"/api/getSearchRemoteList",method:"get"})}export{a,r as b,e as g};
