@@ -1,7 +1,8 @@
 import {getDictList} from "@/api/common/table";
 import {ILTable} from "@/components/l-table/interface";
+import {ILFormDialog} from "@/components/l-form-dialog/interface";
 
-export const config: ILTable = {
+export const tableConfig: ILTable = {
   request: getDictList,
   title: "字典列表",
   search: {
@@ -84,4 +85,57 @@ export const config: ILTable = {
       others: {},
     },
   },
+};
+
+export const formConfig: ILFormDialog = {
+  dialog: {
+    title: "新建字典",
+    visible: false,
+    others: {
+      width: 520,
+    },
+  },
+  form: {
+    operates: {
+      centerShowResetButton: true,
+    },
+    data: {
+      status: "1",
+    },
+  },
+  sections: [
+    {
+      title: "",
+      items: [
+        {
+          type: "input",
+          label: "名称",
+          name: "name",
+          size: "large",
+          info: "用于在页面上显示的名称",
+          rules: [{required: true, message: "请输入类型名称"}],
+        },
+        {
+          type: "radio",
+          label: "状态",
+          name: "status",
+          size: "large",
+          rules: [{required: true, message: "请选择类型状态"}],
+          options: [
+            {label: "启用", value: "1"},
+            {label: "禁用", value: "2"},
+          ],
+        },
+        {
+          type: "textarea",
+          label: "描述",
+          name: "remark",
+          size: "large",
+          others: {
+            maxLength: 255,
+          },
+        },
+      ],
+    },
+  ],
 };
