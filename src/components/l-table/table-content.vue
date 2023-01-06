@@ -28,7 +28,9 @@
               <!-- 序号 -->
               <template v-if="['#', '序号'].includes(item.title)">{{ rowIndex + 1 }}</template>
               <!-- 默认列 -->
-              <template v-else>{{ record[item.dataIndex] }}</template>
+              <template v-else>
+                {{ typeof record[item.dataIndex] === "undefined" ? "-" : record[item.dataIndex] }}
+              </template>
             </template>
           </template>
         </m-table-column>

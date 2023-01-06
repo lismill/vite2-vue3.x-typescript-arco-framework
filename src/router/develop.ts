@@ -113,6 +113,14 @@ export default {
           },
         },
         {
+          path: "choose-data",
+          name: "/develop/others/choose-data",
+          component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/others/choose-data/index.vue"),
+          meta: {
+            title: "选择数据",
+          },
+        },
+        {
           path: "count-to",
           name: "/develop/others/count-to",
           component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/others/count-to/index.vue"),
