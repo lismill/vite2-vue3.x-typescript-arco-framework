@@ -18,6 +18,17 @@
           :align="item.align"
           v-bind="item.others"
         >
+          <!-- 自定义标题 -->
+          <template #title>
+            <m-tooltip v-if="item.titleTips" :content="item.titleTips">
+              {{ item.title }}
+              <icon-question-circle-fill
+                size="16"
+                style="color: #86909c; position: relative; top: 1px; cursor: pointer"
+              />
+            </m-tooltip>
+            <span v-else>{{ item.title }}</span>
+          </template>
           <template #cell="{record, rowIndex}">
             <!-- 自定义插槽 -->
             <template v-if="item?.type === 'slot'">
@@ -41,6 +52,7 @@
 
 <script setup lang="ts">
 import {reactive} from "vue";
+import {IconQuestionCircleFill} from "@arco-design/web-vue/es/icon";
 
 const props = defineProps<{config: any}>();
 const config = reactive(props.config);

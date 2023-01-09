@@ -201,6 +201,10 @@ export interface ILTable {
        */
       title: string;
       /**
+       * 配置列标题提示
+       */
+      titleTips?: string;
+      /**
        * 配置列属性
        */
       dataIndex: string;

@@ -98,6 +98,7 @@ export const config: ILTable = {
       {
         title: "城市",
         dataIndex: "city",
+        titleTips: "这是城市的提示信息",
       },
       {
         title: "日期",
