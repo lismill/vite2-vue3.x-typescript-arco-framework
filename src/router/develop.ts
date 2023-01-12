@@ -31,6 +31,14 @@ export default {
           },
         },
         {
+          path: "simple",
+          name: "/develop/table/simple",
+          component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/table/simple/index.vue"),
+          meta: {
+            title: "简单表格",
+          },
+        },
+        {
           path: "choose",
           name: "/develop/table/choose",
           component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/table/choose/index.vue"),
