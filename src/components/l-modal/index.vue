@@ -4,6 +4,7 @@
     v-bind="{...defaultConfig, ...others}"
     @ok="emits('handle:ok')"
     @cancel="emits('handle:cancel')"
+    @open="emits('handle:open')"
   >
     <template #title>{{ title }}</template>
     <slot></slot>
@@ -17,5 +18,5 @@ const defaultConfig = {
   titleAlign: "start",
   draggable: true,
 };
-const emits = defineEmits(["handle:ok", "handle:cancel"]);
+const emits = defineEmits(["handle:ok", "handle:cancel", "handle:open"]);
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <l-content title="表格表单">
+  <l-content title="编辑表格">
     <m-form ref="form" class="l-table-edit" :model="deepTableConfig.table" :auto-label-width="true">
       <l-table :config="deepTableConfig">
         <template #operate="{rows}">

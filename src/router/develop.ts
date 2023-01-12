@@ -54,6 +54,14 @@ export default {
             title: "编辑表格",
           },
         },
+        {
+          path: "edit-modal",
+          name: "/develop/table/edit-modal",
+          component: () => import(/* webpackChunkName: "develop" */ "@/views/develop/table/edit-modal/index.vue"),
+          meta: {
+            title: "弹出编辑表格",
+          },
+        },
       ],
     },
     {
